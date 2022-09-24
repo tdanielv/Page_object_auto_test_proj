@@ -15,3 +15,4 @@ class Base_Page():
         except NoSuchElementException:
             return False
         return True
+
