@@ -10,8 +10,30 @@ from .test_main_page import link_main_page
 
 product_link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0'
 
+<<<<<<< HEAD
 
 @pytest.mark.need_review
+=======
+@pytest.mark.parametrize('link',
+                             ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
+                              "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
+                              "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer2",
+                              "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer3",
+                              "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer4",
+                              "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer5",
+                              "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer6",
+                              pytest.param("http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+                                           "?promo=offer7", marks=pytest.mark.xfail),
+                              "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8",
+                              "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
+    def test_guest_can_add_product_to_basket(self, browser, link):
+        page = ProductPage(browser, link)
+        page.open()
+        page.add_to_shopping_cart()
+        page.should_be_after_adding_to_cart()
+        
+@pytest.mark.add_to_basket
+>>>>>>> 946a6dddb13b18912642798ddfccb9536087f30e
 class TestUserAddToBasketFromProductPage:
     @pytest.fixture(scope='function', autouse=True)
     def setup(self,browser):
@@ -62,6 +84,7 @@ class TestUserAddToBasketFromProductPage:
         page.click_to_button_buy()
         page.solve_quiz_and_get_code()
         assert page.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), 'Succes message still here'
+<<<<<<< HEAD
 
 @pytest.mark.need_review
 @pytest.mark.parametrize('number', ['0'])
@@ -84,3 +107,5 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = Product_Page(browser, link)
     page.open()
     page.got_to_login_page()
+=======
+>>>>>>> 946a6dddb13b18912642798ddfccb9536087f30e
