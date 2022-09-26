@@ -58,3 +58,13 @@ class Product_Page(Base_Page):
     def click_to_button_buy(self):
         self.browser.find_element(*ProductPageLocators.BUTTON_BUY).click()
 
+    def should_be_correct_name_of_good_in_cart(self):
+        assert self.browser.find_element(*ProductPageLocators.NAME_OF_GOOD_IN_ALERT).text \
+               == self.browser.find_element(*ProductPageLocators.NAME_OF_GOOD).text, \
+            "The name of the product in the alert does not match the real name of the product!"
+
+    def should_be_correct_price_of_good_in_cart(self):
+        assert self.browser.find_element(*ProductPageLocators.PRICE_OF_GOOD_IN_ALERT).text \
+               == self.browser.find_element(*ProductPageLocators.PRICE_OF_GOOD).text, \
+            "The price of the product in the basket does not match the real price of the product!"
+
