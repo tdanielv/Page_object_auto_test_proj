@@ -1,9 +1,10 @@
 import math
+import time
 
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoAlertPresentException
 from .base_page import Base_Page
-from .locators import Cart_Page_Locators
+from .locators import Cart_Page_Locators, ProductPageLocators
 
 
 class Product_Page(Base_Page):
@@ -32,9 +33,19 @@ class Product_Page(Base_Page):
         alert.accept()
         try:
             alert = self.browser.switch_to.alert
+
             alert_text = alert.text
             print(f"Your code: {alert_text}")
 
             alert.accept()
         except NoAlertPresentException:
-            print("No second alert presented")
+            print("No second alert presented")\
+
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def click_to_button_buy(self):
+        self.browser.find_element(*ProductPageLocators.BUTTON_BUY).click()
+

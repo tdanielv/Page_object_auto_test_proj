@@ -4,6 +4,10 @@ class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
 
+class ProductPageLocators():
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, 'div.alertinner')
+    BUTTON_BUY = (By.CSS_SELECTOR, 'button.btn-add-to-basket')
+
 class Main_Page_Locators():
     LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
 
@@ -22,4 +26,7 @@ class Cart_Page_Locators():
     PRICE_ITEM_AFTER_CLICK = (By.CSS_SELECTOR, 'div.alertinner > p >strong')
     PRICE_ITEM_IN_CART =(By.CSS_SELECTOR, 'p.price_color')
 
-    CART_LINK = (By.CSS_SELECTOR, '#default > header > div.page_inner > div > div.basket-mini.pull-right.hidden-xs > span > a')
+    CART_LINK = (By.CSS_SELECTOR, 'span.btn-group > a.btn.btn-default')
+
+    CART_LIST_TEXT = (By.ID, 'content_inner')
+    # div.basket-items

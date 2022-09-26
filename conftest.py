@@ -1,3 +1,5 @@
+from time import time
+
 import pytest
 from selenium import webdriver
 
@@ -22,5 +24,6 @@ def browser(request):
     else:
         raise pytest.UsageError('browser should be chrome or firefox')
     yield browser
+    browser.delete_all_cookies()
     print('\n quit browser')
     browser.quit()
