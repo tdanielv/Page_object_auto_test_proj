@@ -15,6 +15,15 @@ class Product_Page(Base_Page):
             self.browser.find_element(*Cart_Page_Locators.TO_CART_BUTTON).click()
         return name_item
 
+    def add_to_shopping_cart(self):
+        btn = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BTN)
+        btn.click()
+        self.solve_quiz_and_get_code()
+
+    def should_be_after_adding_to_cart(self):
+        self.should_be_correct_name_of_good_in_cart()
+        self.should_be_correct_price_of_good_in_cart()
+
     def add_to_cart_is_succesfull(self, name_item):
         name_item_after_click = self.browser.find_element(*Cart_Page_Locators.NAME_ITEM_AFTER_CLICK).text
         price_item_after_click = self.browser.find_element(*Cart_Page_Locators.PRICE_ITEM_AFTER_CLICK).text
